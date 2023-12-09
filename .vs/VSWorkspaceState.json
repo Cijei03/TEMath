@@ -1,0 +1,18 @@
+{
+  "OutputFoldersPerTargetSystem": {
+    "Maszyna lokalna": [
+      "out\\build\\x64-Debug",
+      "out\\install\\x64-Debug"
+    ]
+  },
+  "ExpandedNodes": [
+    "",
+    "\\lib",
+    "\\lib\\headers",
+    "\\lib\\source",
+    "\\test",
+    "\\test\\source"
+  ],
+  "SelectedNode": "\\lib\\headers\\tem.cppm",
+  "PreviewInSolutionExplorer": false
+}
