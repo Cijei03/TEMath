@@ -1,4 +1,4 @@
-#include "../headers/tem.basic_math.hpp"
+#include "../../headers/base/tem.basic_math.hpp"
 
 #define TEM_LOCAL_CLASS_TEMPLATE template<intern::temType T>
 

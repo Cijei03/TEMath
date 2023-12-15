@@ -1,7 +1,9 @@
 #pragma once
-#include "basic_preprocessor.hpp"
-#include "tem.basic_types.hpp"
-#include "tem.matrix_core.hpp"
+#include "../base/basic_preprocessor.hpp"
+#include "../base/tem.basic_types.hpp"
+#include "../base/tem.angle_units.hpp"
+#include "../base/tem.matrix_core.hpp"
+
 #include "tem.vec2.hpp"
 #include "tem.vec3.hpp"
 #include "tem.vec4.hpp"

@@ -1,7 +1,7 @@
 #pragma once
-#include "basic_preprocessor.hpp"
-#include "tem.basic_types.hpp"
-#include "tem.vector_core.hpp"
+#include "../base/basic_preprocessor.hpp"
+#include "../base/tem.basic_types.hpp"
+#include "../base/tem.vector_core.hpp"
 #include "tem.vec2.hpp"
 #include "tem.vec3.hpp"
 

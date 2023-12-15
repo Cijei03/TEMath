@@ -1,12 +1,12 @@
-#include "../headers/tem.mat2.hpp"
+#include "../../headers/avx2/tem.mat2.hpp"
 
-#define TEM_LOCAL_CLASS_TEMPLATE template<temType T>
+#define TEM_LOCAL_CLASS_TEMPLATE template<::tem::intern::temType T>
 #define M_EL(Row, Column) this->Data[Row][Column]
 
 #include <cmath>
 #include <utility>
 
-namespace tem::intern
+namespace tem::avx2::intern
 {
     TEM_LOCAL_CLASS_TEMPLATE
     constexpr mat2<T>::mat2(const vec2<T>& a, const vec2<T>& b)
@@ -45,7 +45,7 @@ namespace tem::intern
     TEM_LOCAL_CLASS_TEMPLATE
     constexpr mat2<T> mat2<T>::transpose()
     {
-	return mat2<T>(vec2<T>(this->Data[0][0], this->Data[1][0]), vec2<T>(this->Data[0][1], this->Data[1][1]));
+	    return mat2<T>(vec2<T>(M_EL(0, 0), M_EL(1, 0)), vec2<T>(M_EL(0, 1), M_EL(1, 1)));
     }
 
     TEM_LOCAL_CLASS_TEMPLATE
@@ -165,7 +165,7 @@ namespace tem::intern
 
 
     TEM_LOCAL_CLASS_TEMPLATE
-    template<temType U>
+    template<::tem::intern::temType U>
     constexpr mat2<T>::operator mat2<U>() const
     {
         return mat2<U>(static_cast<vec2<U>>(this->Data[0]), static_cast<vec2<U>>(this->Data[1]));
@@ -179,7 +179,7 @@ namespace tem::intern
     }
 }
 
-namespace tem
+namespace tem::avx2
 {
     template class intern::mat2<tem_f32>;
     template class intern::mat2<tem_f64>;

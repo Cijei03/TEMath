@@ -1,10 +1,10 @@
+#include "../../headers/avx2/tem.vec4.hpp"
 #include <cmath>
 #include <utility>
-#include "../headers/tem.vec4.hpp"
 
-#define TEM_LOCAL_CLASS_TEMPLATE template<temType T>
+#define TEM_LOCAL_CLASS_TEMPLATE template<::tem::intern::temType T>
 
-namespace tem::intern
+namespace tem::avx2::intern
 {
     TEM_LOCAL_CLASS_TEMPLATE
     constexpr vec4<T>::vec4(const T x, const T y, const T z, const T w)
@@ -169,21 +169,21 @@ namespace tem::intern
     }
 
     TEM_LOCAL_CLASS_TEMPLATE
-    template<temType U>
+    template<::tem::intern::temType U>
     constexpr vec4<T>::operator vec4<U>() const
     {
         return vec4<U>(static_cast<U>(this->x), static_cast<U>(this->y), static_cast<U>(this->z), static_cast<U>(this->w));
     }
 
     TEM_LOCAL_CLASS_TEMPLATE
-    template<temType U>
+    template<::tem::intern::temType U>
     constexpr vec4<T>::operator vec3<U>() const
     {
         return vec3<U>(static_cast<U>(this->x), static_cast<U>(this->y), static_cast<U>(this->z));
     }
 
     TEM_LOCAL_CLASS_TEMPLATE
-    template<temType U>
+    template<::tem::intern::temType U>
     constexpr vec4<T>::operator vec2<U>() const
     {
         return vec2<U>(static_cast<U>(this->x), static_cast<U>(this->y));
@@ -235,7 +235,7 @@ namespace tem::intern
     }
 }
 
-namespace tem
+namespace tem::avx2
 {
     template class intern::vec4<tem_f32>;
     template class intern::vec4<tem_f64>;

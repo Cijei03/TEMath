@@ -1,10 +1,10 @@
+#include "../../headers/avx/tem.vec3.hpp"
 #include <cmath>
 #include <utility>
-#include "../headers/tem.vec3.hpp"
 
-#define TEM_LOCAL_CLASS_TEMPLATE template<temType T>
+#define TEM_LOCAL_CLASS_TEMPLATE template<::tem::intern::temType T>
 
-namespace tem::intern
+namespace tem::avx::intern
 {
     TEM_LOCAL_CLASS_TEMPLATE
     constexpr vec3<T>::vec3(const T x, const T y, const T z)
@@ -185,21 +185,21 @@ namespace tem::intern
     }
 
     TEM_LOCAL_CLASS_TEMPLATE
-    template<temType U>
+    template<::tem::intern::temType U>
     constexpr vec3<T>::operator vec3<U>() const
     {
         return vec3<U>(static_cast<U>(this->x), static_cast<U>(this->y), static_cast<U>(this->z));
     }
 
     TEM_LOCAL_CLASS_TEMPLATE
-    template<temType U>
+    template<::tem::intern::temType U>
     constexpr vec3<T>::operator vec2<U>() const
     {
         return vec2<U>(static_cast<U>(this->x), static_cast<U>(this->y));
     }
 }
 
-namespace tem
+namespace tem::avx
 {
     template class intern::vec3<tem_f32>;
     template class intern::vec3<tem_f64>;
