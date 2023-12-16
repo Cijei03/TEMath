@@ -1,6 +1,7 @@
 cd..
+cd..
 
 clear
 .\buildCache\benchmarks\TEMathBenchmark.exe
 
-cd win64
+cd scripts/win64

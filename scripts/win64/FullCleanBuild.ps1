@@ -1,4 +1,5 @@
 cd..
+cd..
 
 clear
 Write-Host "Clean build started." -ForegroundColor Cyan
@@ -22,6 +23,4 @@ Write-Host "Starting Release build..." -ForegroundColor Cyan
 cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release
 ninja
 
-cd..
-
-cd win64
+cd ../scripts/win64
