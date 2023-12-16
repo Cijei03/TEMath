@@ -25,6 +25,7 @@ endif()
 add_compile_options(-funsafe-math-optimizations)
 add_compile_options(-ffast-math)
 add_compile_options(-Wno-undefined-inline)
+add_compile_options(-w)
 
 #add_compile_options(-S)
 #add_compile_options(-masm=intel)

@@ -1,8 +1,18 @@
 #pragma once
 
-#ifndef _M_X64
-	#error Library is not compatible with 32-bit systems!
-#elif !_M_ARM64
+#ifndef TEM_64_BIT_ERROR
+	#define TEM_64_BIT_ERROR #error Library is not compatible with 32-bit systems!
+#endif
+
+#if _WIN32
+	#ifndef _M_X64
+		TEM_64_BIT_ERROR
+	#elif !_M_ARM64
+#elif __linux__
+	#ifndef __LP64
+		TEM_64_BIT_ERROR
+	#endif
+#endif
 	
 #endif
 

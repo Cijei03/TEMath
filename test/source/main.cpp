@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 
 #include "Tests.hpp"
 #include "OutputColor.hpp"

@@ -3,6 +3,10 @@
 #include <concepts>
 #include <type_traits>
 
+#ifdef __linux__
+	#include <cstddef>
+#endif
+
 using tem_size = size_t;
 
 using tem_i8 = int8_t;
