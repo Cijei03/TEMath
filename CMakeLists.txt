@@ -1,38 +1,54 @@
 cmake_minimum_required(VERSION 3.28)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED true)
-set(CMAKE_CXX_EXTENSIONS false)
-set(CMAKE_CXX_SCAN_FOR_MODULES false)
-
-set(CMAKE_C_COMPILER "gcc")
-set(CMAKE_CXX_COMPILER "g++")
-set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-
-set(SHOW_ASM_CODE false)
-
-project(TEMathLib VERSION 1.0 LANGUAGES CXX)
-
-if (NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-	#message(FATAL_ERROR "Project should be built with GNU compiler.")
-endif()
-
-if ("${CMAKE_HOST_SYSTEM_NAME}" STREQUAL "Windows")
-	set(CMAKE_STATIC_LIBRARY_PREFIX "")
-	set(CMAKE_STATIC_LIBRARY_SUFFIX ".lib")
-endif()
+project(TEMath VERSION 1.0 LANGUAGES CXX)
 
 add_compile_options(-funsafe-math-optimizations)
 add_compile_options(-ffast-math)
 add_compile_options(-Wno-undefined-inline)
-add_compile_options(-w)
 
-#add_compile_options(-S)
-#add_compile_options(-masm=intel)
-#add_compile_options(-fverbose-asm)
+add_library(${PROJECT_NAME} STATIC)
 
-set(CMAKE_DEBUG_POSTFIX _d)
+target_sources(${PROJECT_NAME} PRIVATE
+	"source/tem.angle_units.cpp"
+	"source/tem.basic_math.cpp"
+	"source/tem.vec2.cpp"
+	"source/tem.vec3.cpp"
+	"source/tem.vec4.cpp"
+	"source/tem.mat2.cpp"
+	"source/tem.mat3.cpp"
+	"source/tem.mat4.cpp"
+)
 
-add_subdirectory(lib)
-add_subdirectory(test)
-add_subdirectory(benchmarks)
+set_target_properties(${PROJECT_NAME} PROPERTIES
+	CXX_STANDARD 20
+	CXX_STANDARD_REQUIRED true
+	DEBUG_POSTFIX "_d"
+)
+
+
+if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+	set(TEST_PROJECT_NAME "TEMathTest")
+
+	add_executable(${TEST_PROJECT_NAME})
+
+	target_sources(${TEST_PROJECT_NAME} PRIVATE
+		"source/test/main.cpp"
+		"source/test/OutputColor.cpp"
+		"source/test/TestDef.cpp"
+		"source/test/Tests-vec2.cpp"
+		"source/test/Tests-vec3.cpp"
+		"source/test/Tests-vec4.cpp"
+		"source/test/Tests-mat2.cpp"
+		"source/test/Tests-mat3.cpp"
+		"source/test/Tests-mat4.cpp"
+	)
+
+	set_target_properties(${TEST_PROJECT_NAME} PROPERTIES
+		CXX_STANDARD 20
+		CXX_STANDARD_REQUIRED true
+		DEBUG_POSTFIX "_d"
+	)
+
+	add_dependencies(${TEST_PROJECT_NAME} ${PROJECT_NAME})
+	target_link_libraries(${TEST_PROJECT_NAME} ${PROJECT_NAME})
+endif()
