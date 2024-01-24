@@ -1,0 +1,2 @@
+# Tanarea SDK code convention
+

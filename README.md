@@ -1,2 +1,1 @@
- 
-Dzień dobry
+# DUPA

@@ -8,12 +8,11 @@
 	#ifndef _M_X64
 		#error TEM_64_BIT_ERROR
 	#elif !_M_ARM64
+	#endif
 #elif __linux__
 	#ifndef __LP64
 		#error TEM_64_BIT_ERROR
 	#endif
-#endif
-	
 #endif
 
 #include "base/tem.basic_types.hpp"

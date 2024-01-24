@@ -2,10 +2,7 @@
 #include <cstdint>
 #include <concepts>
 #include <type_traits>
-
-#ifdef __linux__
-	#include <cstddef>
-#endif
+#include <cstddef>
 
 using tem_size = size_t;
 
